@@ -10,8 +10,21 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ * require_tree .
  *= require_self
+ *=require bootstrap.min
+ *=require colorpicker
+ *=require font-awesome.min
+ *=require icon
+ *=require idangerous.swiper
+ *=require idangerous.swiper_backup
+ *=require ie-9
+ *=require jquery-ui
+ *=require loader
+ *=require magnific
+ *=require stylesheet
+
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
