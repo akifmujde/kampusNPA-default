@@ -8,4 +8,5 @@ class User < ApplicationRecord
   belongs_to :university
   belongs_to :unv_fac
   belongs_to :fac_dep
+  has_many :comments
 end

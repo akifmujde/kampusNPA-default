@@ -30,7 +30,33 @@ unvfac.university_id = 1
 unvfac.faculty_id = 1
 unvfac.save
 unvfac = UnvFac.create
+unvfac.university_id = 1
+unvfac.faculty_id = 2
+unvfac.save
+unvfac = UnvFac.create
+unvfac.university_id = 1
+unvfac.faculty_id = 3
+unvfac.save
+
+unvfac = UnvFac.create
 unvfac.university_id = 2
+unvfac.faculty_id = 1
+unvfac.save
+unvfac = UnvFac.create
+unvfac.university_id = 2
+unvfac.faculty_id = 2
+unvfac.save
+unvfac = UnvFac.create
+unvfac.university_id = 2
+unvfac.faculty_id = 3
+unvfac.save
+
+unvfac = UnvFac.create
+unvfac.university_id = 3
+unvfac.faculty_id = 1
+unvfac.save
+unvfac = UnvFac.create
+unvfac.university_id = 3
 unvfac.faculty_id = 2
 unvfac.save
 unvfac = UnvFac.create
@@ -56,7 +82,24 @@ depcour.fac_dep_id = 1
 depcour.course_id = 2
 depcour.save
 depcour = DepCour.create
+depcour.fac_dep_id = 1
+depcour.course_id = 1
+depcour.save
+depcour = DepCour.create
+depcour.fac_dep_id = 1
+depcour.course_id = 3
+depcour.save
+
+depcour = DepCour.create
 depcour.fac_dep_id = 2
+depcour.course_id = 1
+depcour.save
+depcour = DepCour.create
+depcour.fac_dep_id = 2
+depcour.course_id = 2
+depcour.save
+depcour = DepCour.create
+depcour.fac_dep_id = 3
 depcour.course_id = 1
 depcour.save
 depcour = DepCour.create

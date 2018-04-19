@@ -13,29 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery
 //= require bootstrap-sprockets
-
-// require_tree .
-
-//= require bootstrap.min
-//= require charts
-//= require colors
-//= require filters
-//= require global
-//= require idangerous.swiper.min
-//= require isotope.pkgd.min
-//= require jqColorPicker
-//= require jquery.canvasjs.min
-//= require jquery.countTo
-//= require jquery.easy-autocomplete.min
-//= require jquery.mixitup
-//= require jquery.viewportchecker.min
-//= require jquery-2.1.4.min
-//= require jquery-ui
-//= require jquery-ui.min
-//= require magnific
-//= require map
-//= require script
-//= require sorttable
-//= require wow
+//= require jquery
+//= require_tree .

@@ -1,29 +1,155 @@
-<h2>Sign up</h2>
+<script>
+    $(document).ready(function () {
+        // reset fonksiyonu ile istenlen id ye sahip select box un seçilebilirliği kapaılır ve null değeri olan seçilir.
+        function reset($comenId) {
+            $($comenId).prop("disabled", true);
+            $($comenId).val("null");
+        }
+        /*
+        unv adlı id ye sahip select box a herhangi bir değişim gözlendiğinde bu fonksiyon tetiklenir.
+        bu fonksiyonun algoritması şöyledir
+        tıklanılan bu select box en tepedeki select box tur. Yani herhangi bir seçim durumunda
+        fakülteleri içeren select box
+         */
+        $("#unv").change(function () {
+            reset("#fac");
+            reset("#dep");
+            $id = parseInt($("#unv").val());
+            if (!isNaN($id)) {
+                $("#fac>option").each(function () {
+                    if ($(this).attr('id') == $id) {
+                        $(this).show();
+                    }
+                    else {
+                        if (isNaN($(this).val())) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    }
+                });
+                $("#fac").prop("disabled", false);
+            }
+        });
+        $("#fac").change(function () {
+            reset("#dep");
+            $id = parseInt($("#fac").val());
+            if (!isNaN($id)) {
+                $("#dep>option").each(function () {
+                    if ($(this).attr('id') == $id) {
+                        $(this).show();
+                    }
+                    else {
+                        if (isNaN($(this).val())) {
+                            $(this).show();
+                        }
+                        else {
+                            $(this).hide();
+                        }
+                    }
+                });
+                $("#dep").prop("disabled", false);
+            }
+        });
+    });
+</script>
+<div class="container" style="width: 75%">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row" style="text-align: center">
+    <div class="col-md-12">
+      <h1><%=t("sign_up")%></h1>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="panel panel-success">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <label><%= t("name") %></label><br>
+                <%= f.text_field :name, autofocus: true, :class => 'form-control' %>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <label><%= t("surname") %></label><br>
+                <%= f.text_field :surname, :class => 'form-control' %>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+
+              <div class="col-md-4 col-lg-4">
+                <label>Üniversite</label>
+                <select id="unv" name="user[university_id]" class="form-control">
+                  <option selected value="null" disabled>Üniversite</option>
+                  <% University.all.each do |unv| %>
+                    <option value="<%= unv.id %>"><%= unv.name %></option>
+                  <% end %>
+                </select>
+
+              </div>
+
+              <div class="col-md-4 col-lg-4">
+                <label>Fakülte</label>
+                <select id="fac" name="user[unv_fac_id]" disabled class="form-control">
+                  <option selected id="0" value="null" disabled>Fakülte</option>
+                  <% UnvFac.all.each do |fac| %>
+                    <option id="<%= fac.university_id %>" value="<%= fac.id %>"><%= fac.faculty.name %></option>
+                  <% end %>
+                </select>
+
+              </div>
+
+              <div class="col-md-4 col-lg-4">
+                <label>Bölüm</label>
+                <select id="dep" name="user[fac_dep_id]" disabled class="form-control">
+                  <option selected value="null" disabled>Bölüm</option>
+                  <% FacDep.all.each do |dep| %>
+                    <option id="<%= dep.unv_fac_id %>" value="<%= dep.id %>"><%= dep.department.name %></option>
+                  <% end %>
+                </select>
+
+              </div>
+
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="field">
+                  <label><%= t("email") %></label><br/>
+                  <%= f.email_field :email, :class => 'form-control' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <label><%= t("password") %></label>
+                <% if @minimum_password_length %>
+                  <em>(minimum <%= @minimum_password_length %> <%= t("character") %>)</em>
+                <% end %><br/>
+                <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <label><%= t("confrim_password") %></label><br/>
+                <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="actions" style="text-align: center">
+                  <input type="submit" name="commit" value="<%= t("sign_up") %>" class="btn btn-success btn-lg">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>

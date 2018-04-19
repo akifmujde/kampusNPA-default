@@ -1,26 +1,69 @@
-<h2>Log in</h2>
+<section id="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-wrap">
+          <h1><%=t("sign_in")%></h1>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <label for="email" class="sr-only">Email</label>
+              <%= f.email_field :email, autofocus: true, :class => 'form-control',placeholder: "somebody@example.com" %>
+            </div>
+            <div class="form-group">
+              <label for="key" class="sr-only">Password</label>
+              <input autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password" placeholder="Password">
+            </div>
+            <div class="checkbox">
+              <span onclick="showPassword()"><span class="character-checkbox" ></span><span class="label">Show password</span></span>
+            </div>
+            <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+          <% end %>
+          <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
+          <hr>
+        </div>
+      </div> <!-- /.col-xs-12 -->
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
+</section>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="modal fade forget-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">Recovery password</h4>
+      </div>
+      <div class="modal-body">
+        <p>Type your email account</p>
+        <input type="email" name="recovery-email" id="recovery-email" class="form-control" autocomplete="off">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-custom">Recovery</button>
+      </div>
+    </div> <!-- /.modal-content -->
+  </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<script>
+    function showPassword() {
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+        var key_attr = $('#user_password').attr('type');
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+        if (key_attr != 'text') {
 
-<%= render "devise/shared/links" %>
+            $('.checkbox').addClass('show');
+            $('#user_password').attr('type', 'text');
+
+        } else {
+
+            $('.checkbox').removeClass('show');
+            $('#user_password').attr('type', 'password');
+
+        }
+
+    }
+</script>

@@ -4,8 +4,33 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <label>Üniversite</label><br />
+    <label><%= University.find(current_user.university.id).name %></label>
+  </div>
+
+  <div class="field">
+    <label>Fakülte</label><br />
+    <label><%= Faculty.find(current_user.unv_fac.id).name %></label>
+  </div>
+
+  <div class="field">
+    <label>Bölüm</label><br />
+    <label><%= Department.find(current_user.fac_dep.id).name %></label>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

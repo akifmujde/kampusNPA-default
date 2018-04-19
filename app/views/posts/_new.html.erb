@@ -1,10 +1,9 @@
 <script>
     $(document).ready(function(){
         var optionalVisible = 0;
-        var university_id = <%= post.university_id %>;
-        var unv_fac_id = <%= post.unv_fac_id %>;
-        var fac_dep_id = <%= post.fac_dep_id %>;
-        var dep_cour_id = <%= post.dep_cour_id %>;
+        var university_id = <%= current_user.university_id %>;
+        var unv_fac_id = <%= current_user.unv_fac_id %>;
+        var fac_dep_id = <%= current_user.fac_dep_id %>;
         var unv_name = "";
         var fac_name = "";
         var dep_name = "";
@@ -47,19 +46,11 @@
             }
         });
         $("#cour>option").each(function () {
-            if (dep_cour_id == $(this).val()) {
+            if (fac_dep_id == $(this).attr('id')) {
                 $(this).show();
-                $(this).prop("selected", true);
-                cour_name = $(this).text();
-                $("#note_name").html(unv_name + " " + fac_name + " " + dep_name + " " + cour_name);
             }
             else {
-                if ($(this).attr("id") == fac_dep_id) {
-                    $(this).show();
-                }
-                else {
-                    $(this).hide();
-                }
+                $(this).hide();
             }
         });
 

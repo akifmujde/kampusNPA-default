@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
     <title>KampusNPA</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="img/favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track'=> 'reload' %>
-    <%= stylesheet_link_tag    'bootstrap.min' %>
-    <%= stylesheet_link_tag    'colorpicker' %>
-    <%= stylesheet_link_tag    'font-awesome.min' %>
-    <%= stylesheet_link_tag    'icon' %>
-    <%= stylesheet_link_tag    'idangerous.swiper' %>
-    <%= stylesheet_link_tag    'idangerous.swiper_backup' %>
-    <%= stylesheet_link_tag    'ie-9' %>
-    <%= stylesheet_link_tag    'jquery-ui' %>
-    <%= stylesheet_link_tag    'loader' %>
-    <%= stylesheet_link_tag    'magnific' %>
-    <%= stylesheet_link_tag    'stylesheet' %>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload' %>
-    <%= javascript_include_tag 'bootstrap.min'%>
-    <%= javascript_include_tag 'charts'%>
-    <%= javascript_include_tag 'colors'%>
-    <%= javascript_include_tag 'filters'%>
-    <%= javascript_include_tag 'global'%>
-    <%= javascript_include_tag 'idangerous.swiper.min'%>
-    <%= javascript_include_tag 'isotope.pkgd.min'%>
-    <%= javascript_include_tag 'jqColorPicker'%>
-    <%= javascript_include_tag 'jquery.canvasjs.min'%>
-    <%= javascript_include_tag 'jquery.countTo'%>
-    <%= javascript_include_tag 'jquery.easy-autocomplete.min'%>
-    <%= javascript_include_tag 'jquery.mixitup'%>
-    <%= javascript_include_tag 'jquery.viewportchecker.min'%>
-    <%= javascript_include_tag 'jquery-2.1.4.min'%>
-    <%= javascript_include_tag 'jquery-ui'%>
-    <%= javascript_include_tag 'jquery-ui.min'%>
-    <%= javascript_include_tag 'magnific'%>
-    <%= javascript_include_tag 'map'%>
-    <%= javascript_include_tag 'script'%>
-    <%= javascript_include_tag 'sorttable'%>
-    <%= javascript_include_tag 'wow'%>
-
-
-
-
-
-
 
   </head>
 
   <body>
-    <%= yield %>
+    <div id="loader" class="container">
+      <div class="row">
+        <div id="loader">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="lading"></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-inverse" hidden>
+      <%= render 'shared/navbar' %>
+    </nav>
+
+    <main class="container bg" style="width:100%;padding-top:0.5%;overflow:auto;" hidden>
+      <div class="col-md-12 col-sm-12 col-md-12 col-lg-12" style="height:100%;" onload="yukle()">
+        <%= yield %>
+      </div>
+    </main>
+
+    <div class="footer container" hidden></div>
+
+    <script>
+      function yukle(){
+          setTimeout(function () {
+              $("nav").fadeIn('slow');
+              $("main").fadeIn('slow');
+              $("footer").fadeIn('slow');
+              $("#loader").fadeOut('slow');
+          }, 1500);
+      }
+      $(document).ready(function yukle() {
+          setTimeout(function () {
+              $("nav").fadeIn('slow');
+              $("main").fadeIn('slow');
+              $("footer").fadeIn('slow');
+              $("#loader").fadeOut('slow');
+          }, 1500);
+      });
+    </script>
+
   </body>
 </html>
