@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   #mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'posts#index'
   devise_for :users
-  resources :posts
+  resources :posts do
+    resources :comments
+    end
   resources :users
   resources :courses
   resources :departments

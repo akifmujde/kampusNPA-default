@@ -13,6 +13,7 @@
                 $(this).prop("selected", true);
                 unv_name = $(this).text();
                 $("#note_name").html(unv_name);
+                $("#post_title").val(unv_name);
             }
         });
         $("#fac>option").each(function () {
@@ -20,6 +21,7 @@
                 $(this).prop("selected", true);
                 fac_name = $(this).text();
                 $("#note_name").html(unv_name + " " + fac_name);
+                $("#post_title").val(unv_name + " " + fac_name);
             }
             else{
                 if($(this).attr("id") == university_id){
@@ -35,6 +37,7 @@
                 $(this).prop("selected", true);
                 dep_name = $(this).text();
                 $("#note_name").html(unv_name + " " + fac_name + " " + dep_name);
+                $("#post_title").val(unv_name + " " + fac_name + " " + dep_name);
             }
             else {
                 if ($(this).attr("id") == unv_fac_id) {
@@ -68,6 +71,7 @@
             if (!isNaN($id)) {
                 unv_name = $("#unv option:selected").text();
                 $("#note_name").html(unv_name);
+                $("#post_title").val(unv_name);
                 $("#fac>option").each(function () {
                     if ($(this).attr('id') == $id) {
                         $(this).show();
@@ -85,6 +89,7 @@
             }
             else {
                 $("#note_name").html("Lütfen Üniversite Seçiniz");
+                $("#post_title").val(" ");
             }
         });
         $("#fac").change(function () {
@@ -95,6 +100,7 @@
             if (!isNaN($id)) {
                 fac_name = $("#fac option:selected").text();
                 $("#note_name").html(unv_name + " " + fac_name);
+                $("#post_title").val(unv_name + " " + fac_name);
                 $("#dep>option").each(function () {
                     if ($(this).attr('id') == $id) {
                         $(this).show();
@@ -112,6 +118,7 @@
             }
             else {
                 $("#note_name").html(unv_name);
+                $("#post_title").val(unv_name);
             }
         });
         $("#dep").change(function () {
@@ -121,6 +128,7 @@
             if (!isNaN($id)) {
                 dep_name = $("#dep option:selected").text();
                 $("#note_name").html(unv_name + " " + fac_name + " " + dep_name);
+                $("#post_title").val(unv_name + " " + fac_name + " " + dep_name);
                 $("#cour>option").each(function () {
                     if ($(this).attr('id') == $id) {
                         $(this).show();
@@ -138,6 +146,7 @@
             }
             else {
                 $("#note_name").html(unv_name + " " + fac_name);
+                $("#post_title").val(unv_name + " " + fac_name);
             }
         });
         $("#cour").change(function () {
@@ -145,10 +154,12 @@
                 $("#submit").prop('disabled', false);
                 cour_name = $("#cour option:selected").text();
                 $("#note_name").html(unv_name + " " + fac_name + " " + dep_name + " " + cour_name);
+                $("#post_title").val(unv_name + " " + fac_name + " " + dep_name + " " + cour_name);
             }
             else{
                 $("#submit").prop('disabled', true);
                 $("#note_name").html(unv_name + " " + fac_name + " " + dep_name);
+                $("#note_name").post_title(unv_name + " " + fac_name + " " + dep_name);
             }
         });
     });
@@ -182,6 +193,7 @@
       <div class="col-md-12">
         <label>Açıklama</label><br>
         <textarea class="form-control" name="post[content]" id="post_content"><%= @post.content %></textarea>
+        <input name="post[title" id="post_title" value="" class="form-control ">
       </div>
     </div>
 

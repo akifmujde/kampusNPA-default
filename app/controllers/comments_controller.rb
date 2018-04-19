@@ -1,5 +1,8 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_post
+  before_action :denetim, only: [:edit,:destroy]
 
   # GET /comments
   # GET /comments.json
@@ -62,6 +65,12 @@ class CommentsController < ApplicationController
   end
 
   private
+
+    def set_post
+      @post=Post.find(params[:post_id])
+      #@comment = @post.comments.find(params[:id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
