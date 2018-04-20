@@ -224,24 +224,17 @@
         </div>
       </div><br>
       <div class="row">
-        <h3>Tüm Notlarda Ara</h3>
-        <div id="custom-search-input">
-          <div class="input-group col-md-12">
-            <input type="text" class="  search-query form-control" placeholder="Search"/>
-            <span class="input-group-btn">
-              <button class="btn btn-danger" type="button">
-                <span class=" glyphicon glyphicon-search"></span>
-              </button>
-            </span>
-          </div>
-        </div>
+        <%= form_tag(posts_path, method: :get) do %>
+          <p><%=text_field_tag :term, params[:term] , class:'search-query form-control'%></p>
+          <p hidden>  <%=submit_tag "Search", name: nil, class:'btn btn-danger'%></p>
+        <%end%>
+
       </div><br>
       <div id="a-tag" class="row">
         <% @posts.each do |post| %>
           <a unv="<%= post.university_id %>" fac="<%= post.unv_fac_id %>" dep="<%= post.fac_dep_id %>" cour="<%= post.dep_cour_id %>" href="/posts/<%= post.id %>">
             <div class="w3-third w3-row-padding w3-margin-top">
               <div class="w3-card">
-                <img src="http://www.kinyu-z.net/data/wallpapers/180/1334806.jpg" style="width:100%">
                 <div class="w3-container">
                   <h5>
                     <%= post.university.name %>&nbsp;&nbsp;<%= post.unv_fac.faculty.name %><br>

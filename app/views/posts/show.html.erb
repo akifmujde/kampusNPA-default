@@ -17,8 +17,9 @@
         </h1>
       </div>
       <div class="row">
-        <h3>Açıklama (updated by :  <%= @post.user.name %>
-          <%= @post.user.surname %>)</h3>
+        <h3>Açıklama (updated by :  <a href="/users/<%= @post.user_id %>" class="btn btn-link"><%= @post.user.name %>
+          <%= @post.user.surname %></a>)</h3>
+        <hr style="background-color: black;border-color: black">
         <div class="row">
           <%= @post.content %>
         </div>
@@ -26,7 +27,7 @@
       </div>
       <br>
       <div class="row" style="text-align: right">
-        <a href="<%= @post.file %>" class="btn btn-success">Download file</a>
+        <a href="<%= @post.file %>" class="btn btn-success" download="">Download file</a>
         <% if current_user.id == @post.user_id %>
           <%= link_to 'Edit', edit_post_path(@post),class: "btn btn-warning" %>
         <% end %>

@@ -41,6 +41,9 @@
   <ul class="nav navbar-nav navbar-right">
     <% if user_signed_in? %>
       <li>
+        <%= link_to "My Profile", current_user,class: "btn btn-link" %>
+      </li>
+      <li>
         <a class="btn-link" href="/users/edit" data-toggle="tooltip" data-placement="bottom" title="<%= t("edit_profile_link") %>.">
           <i class="fa fa-pencil-square-o fa-lg"></i>&nbsp;&nbsp;<%= t("edit_profile") %>
         </a>
@@ -62,20 +65,9 @@
         </a>
       </li>
     <% end %>
-    <li>
-      <a class="btn btn-default btn-outline btn-circle" data-toggle="collapse" href="#nav-collapse3" aria-expanded="false" aria-controls="nav-collapse3">
-        SEARCH
-      </a>
-    </li>
+
   </ul>
 
-  <div class="collapse nav navbar-nav nav-collapse" id="nav-collapse3" style="background-color: #020E17;">
-    <form class="navbar-form navbar-right" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" />
-      </div>
-      <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-    </form>
-  </div>
+
 </div>
 <!-- /.navbar-collapse -->
