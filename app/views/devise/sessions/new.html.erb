@@ -6,11 +6,11 @@
           <h1><%=t("sign_in")%></h1>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
-              <label for="email" class="sr-only">Email</label>
+              <label>Email</label>
               <%= f.email_field :email, autofocus: true, :class => 'form-control',placeholder: "somebody@example.com" %>
             </div>
             <div class="form-group">
-              <label for="key" class="sr-only">Password</label>
+              <label>Password</label>
               <input autocomplete="off" class="form-control" type="password" name="user[password]" id="user_password" placeholder="Password">
             </div>
             <div class="checkbox">
@@ -18,8 +18,10 @@
             </div>
             <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
           <% end %>
-          <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
-          <hr>
+          <div style="text-align: center">
+            <a href="javascript:;" class="btn btn-link" data-toggle="modal" data-target=".forget-modal">Forgot
+              your password?</a>
+          </div>
         </div>
       </div> <!-- /.col-xs-12 -->
     </div> <!-- /.row -->

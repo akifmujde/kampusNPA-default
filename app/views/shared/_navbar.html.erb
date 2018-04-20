@@ -12,7 +12,7 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  <a class="navbar-brand" href="/posts?locale=<%= I18n.locale %>">
+  <a class="navbar-brand" href="/">
     <%= t("home") %>
   </a>
 </div>
@@ -25,16 +25,16 @@
   <ul class="nav navbar-nav navbar-left">
     <% if user_signed_in? %>
       <li>
-        <a href="/posts/new?locale=<%= I18n.locale %>" data-toggle="tooltip" data-placement="bottom" title="<%= t("new_post_link") %>.">
+        <a href="/posts/new" data-toggle="tooltip" data-placement="bottom" title="<%= t("new_post_link") %>.">
           <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;<%= t("new_post") %>
         </a>
       </li>
     <% else %>
-      <li>
+      <!--<li>
         <a href="#" target="_blank" data-toggle="tooltip" data-placement="bottom" title="<%= t("about_link") %>!">
           <i class="fa fa-file-word-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp;<%= t("about") %>
         </a>
-      </li>
+      </li>-->
     <% end %>
   </ul>
 
@@ -52,12 +52,12 @@
       </li>
     <% else %>
       <li>
-        <a class="btn-link " href="/users/sign_in?locale=<%= I18n.locale %>" data-toggle="tooltip" data-placement="bottom" title="<%= t("sign_in_link") %>.">
+        <a class="btn-link " href="/users/sign_in" data-toggle="tooltip" data-placement="bottom" title="<%= t("sign_in_link") %>.">
           <i class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;<%= t("sign_in") %>
         </a>
       </li>
       <li>
-        <a class="btn-link " href="/users/sign_up?locale=<%= I18n.locale %>" data-toggle="tooltip" data-placement="bottom" title="<%= t("sign_up_link") %>.">
+        <a class="btn-link " href="/users/sign_up" data-toggle="tooltip" data-placement="bottom" title="<%= t("sign_up_link") %>.">
           <i class="fa fa-users fa-lg"></i>&nbsp;&nbsp;<%= t("sign_up") %>
         </a>
       </li>

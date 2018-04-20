@@ -1,68 +1,101 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container-fluid">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <!------ Include the above in your HEAD tag ---------->
 
-  <div class="field">
-    <label>Üniversite</label><br />
-    <label><%= University.find(current_user.university.id).name %></label>
+
+  <div class="col-md-4 col-lg-4" style="padding: 1%;">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+
+        <div class="card hovercard">
+          <div class="cardheader">
+
+          </div>
+          <div class="avatar">
+            <img alt="" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxASEhUQEBISEBAWEBUWFRUWEBcSFxgYFRUZFhUVFxYYHiggGB0oGxYVITEtJSkrLjouGR8zODMtNyguLisBCgoKDg0OGxAQGzAmICIuMDA3Ky0tLS8tLzUvLi0tLS0wLS0rLS0vKzctLS8tLS0yLS8vLS0tLS0uLSs1LS0tK//AABEIAOEA4QMBEQACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAAAwECBAYHBQj/xABFEAACAQMBBAcEBwUGBQUAAAABAgADBBEhBQYSMQcTQVFhcYEiMpGhQlJicoKxwRQjktHwCCQzsuHxFVOis+M1Q3ODlP/EABsBAQACAwEBAAAAAAAAAAAAAAAEBQEDBgIH/8QAOREBAAECAwYCCQMEAAcAAAAAAAECAwQRMQUSIUFRYXGhBhMigZGxwdHwFDLhI0JS8RUWJDM0YnL/2gAMAwEAAhEDEQA/AO4wEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBA1Pb/SBY2xKBjcVRoVpYIB+059kd2mT4TRXiKKeGq4wmxMTiI3pjdjrP0jX6NLvela7Y/uaNGkv2uKq3xyo+Ujziq50hd2vRvD0x7dUz4ZR9/mwR0l7Sz71Hy6kfznn9TcSP8Al/B9J+L0rDpXuVP7+hSqD7BakfnxA/Ke6cVVzhGvejVmf+3XMeOU/ZvG72+9ldkIjmlWPKnUwrH7pzhvQ58JIov0V8OagxmyMTho3qozp6xxj384bJNysICAgICAgICAgICAgICAgICAgICAgWV6yopd2CoqlmYnAAAyST2CYmcuMvVNM1VRTTGcy4xvtv7Vui1G2JpWvIkZV6veW7VXw+PcIF2/NfCNHb7M2LRh4i5djOvyj+e/w6zpUjr0gICBQwOi7i9IL0ytveuXpHASsxyydwc/SXxOo8RylWcRMcKtHNbV2JTXE3cPGVXOnlPh0ntz+fWgc6jlJzjlYCAgICAgICAgICAgICAgICAgICByjpa3lLP+wUj7C4asR9JtGVPIaE+OO6QcTcznch1/o/s+Kaf1Nes6eGkz9PDxc5pU2YhUUsxOAqgsSTyAA1JkV0tVUUxnVOUQ33YnRbc1AHuai24P0AOsf114V+ck0YWqdeDnsV6RWbc7tmne76R958nvP0V2ark3FdfEmmB/l/WbP0tPWfJAj0jxEzwop8/u13a3RzWQF7SrTvFGpUYWoPIZIb4g9wM11YeY/bOayw+3rdU7t6maJ66x948/FpVSiQSCCCCQQRggjQgg8jI+S9iqJjOEREw9KQy6x0Tbymopsapy1NeKiSdSg5p+HIx4H7Mm4a5n7EuP9IMBFFX6iiOE6+PX38+/i6PJbmSAgICAgICAgICAgICAgICAgIGNtO8WjRqV292nTZz48Kk4+U81VbsTLbYtTduU241qmI+L5tubhqjtVc5d3Z2PezHJPxMqZnPjL6dRRFFMUU6RGUe52Po03UW3ordVVzc1VyMj/DRhoo7mI1Pnjs1n4e1uxvTrLitt7Sm/cmzRPsU+c9fDp8WZvzvcLNRSpAPcuuRnVUXlxsO05zgeB7tfV69ucI1adlbLnFTv18KI8+0fWXJ767rXDcdxUes3exyB90clHkBIUzNXGXYWrduxTu2qYiO35nPvRU6fCQy5RhyZTwkeRGomHqqrejKrjHSU+0rxq2Gre1VGB1mPadRoBU+sRphueNDnTGapz1eLNqm1wo4U9OUeHTvGnOMuOfltRJDEAkKvE2ByHEFyfDLKPUTxklRXEZRPP/f0Y0w2s3Yu0Wtq9K4XOadQMcdq8nX1UsPWZpq3Ziro0YmxF+zVan+6P9T8X0gjggEHIIyD4HlLd8xmJicpXQwQEBAQEBAQEBAQEBAQPEfe3Z4qmg1zSSoOxm4FOdNHbCtqCNDA9lHBAIIIPIg5B9YF0BA1bpNrFdm18HBbq19GqLn5ZE0YicrcrbYdMVY6jPlnPlLjW7lmK11QokZV66Bh3rxAsP4QZAojeqiHbY27NrD11xrET8eXm+jpbPmb5/23fG4ua1Zjniqtj7qnhQfwhZV1zvVTL6LhbMWbFFuOUR8dZ81lJIh6qlMacy17zGqrMS20y3Ho32DWNeo9eg4t3talMmonCG42TTDakEBtRpN9i3O9nMcMlLtrG2/VU026434qieE6ZRK3a3R/aWaVbm6uKjUVY9XSRQjtk+xTLnOSdBoByJ8sVYemiJqqngzh9t4jFVU2bNERVOszxiOs5cPnPRzhyCSQOEEnABJAB7MnU+siumjhD6G3OrF7G2Y6n9mpgn7qhc/KWlmc6I8HzfaNO7i7kR/lPzexNiEQEBAQEBAQEBAQEC13ABJIAAySTgADmSYHOd7t9eMNSoNwUB79XkX8F7l+Z8uYco2vfiqwIGFUYHefOBHs3a1zbnNvWq0dc4SoVU/eXk3qDA2/ZXS1tClgV1pXS97L1Tn8Sez/ANEDctk9Luz6mBXWratpqydamT3NTyfiogZW/e07a72ZWa1rUq4U02PV1FcgCqucgHIwD2zRiYztyt9h1ZY6jvn8pcs3VuhSvLeodFFwmT3Bjwk+gJMgW5yrie7tMfbm5hblMf4z930XLZ80fPe07Q0birRYYKVnX04jwn1XB9ZV1RlVMPo9i7F2zRcjnEfz5rqLRDFUJzU0mWvdQdeyMGRmRhyZWKkeRGomM8tGzciqMqozjpLeujzei6rV2oXFUVKS271OJlUMvCyDVhjIwx5585JsXapqynooNsbOsWrMXLVOUzVEZRpxieXu5I94d7dmbQp1LWqalEhyaNc0+JeJdFf2csAe3I5HsPLFy9buRuz8XrB7MxuCrpvURFXDjTnxy5xx4Z+/Vy2ouCRkHBIyDkHHaD2iQ3WROcZvoTcykVsLUHn+zUz/ABKG/WWdmMrceD5xtKrexd2f/afm9qbUEgICAgICAgICAgQ3l1TpI1WqwSmoyWJ0H8zA5Nvjvo1xlQTStQfd+lUPYW/Qep8A5ztDaDVT3IOS/qe8wMPMCmYFMwLTAsUYYN2g+vj8szzVTvUzDdhr02L1N2P7Zifv5PYlTMcn0+mqJiJjSXdej3edby3CO395pKFqA82A0FUd4Pb3HPhmxsXd+nKdYcDtjZ84W9vUx7FWnbt+cvewukHc9rj+9WwBrhcOnLrFHIg8uMcteY07BPN+zve1GrfsjakWP6N39s6T0/j5OXHiVijgo4OGVgVYHuIOokN1nCqN6njE8+SrVu8xmRSvu7d0VWqApxjKKRhmX6+OYXsBPPszgkZmJiOLzbrprqmKeOWs8vDx69OfJhLeOgcIxXjpmm+O1CysV8iVGfDI7Z5zyb5tU15b0aTnHjxj6sKeW9lbLsWuK1OgnvVKipyzjJ1b0GT6TMU705dWm/eizaquVaUxm+kqNMKoVRhVAAHgBgS3iMnzCqqapmZ5r4YICAgICAgICAgYG2tr0bWma1duFeQHNmPYqjtP+5wIHGN7d7qly3HVPBSB/d0QdPM/Wbx7OzxDSbq6aoct6DsECDMC3MCmYFMwKZgWkwPQsK+RwnmOXlIOJt5TvRzdn6P4+Llr9PVPtU6d4/jTwyelY3tWjUWrRdqdRTkMp18vEd4OkjRMxOcL+7aou0TRcjOJ5OlbE6VhgLeUTxf8ylgg+JRjp6E+QkujFf5Q5fFejc552KvdV94+0PU2hvnsSuP36isRyD2rMR5Erp8Z7m/aq1+SJZ2VtOzP9OcvCqI+rWNob42VP/0+xpU37K1SknEviqjPzPoZpqvUx+ylbWdlYmv/AMq9Mx/jEz5z/HvabeXj1HapUYvUY5ZmOSTNEzM8ZXdu1TbpiiiMojkxGaeW2FIZdQ6I92yM39VcaFaAI7Do9T81H4u8SZhrf98uU9IcfE/9NRPer6R9Z9zp8mOUICAgICAgICAgeHvVvPQsafFUPHVYHq6QPtMe/wCyvefzOBA4fvJvJVuKhrV24n+gg0VB3KOwfMwNZrVixyxyf60ECMmBQmBaTApmBTMCmYFMwCuQcjQiYmImMpe7dyq1XFdE5TGkvVtLsPpybu/USuu2Zo48nebM2tbxkbs8K+nXvH21jzZM0rcgMwwQyQPO2jtdaJACrVYEEq3FwYByVYqQdeWhB8RJFmxNfGdFFtTbNGGibdqc6/Knx79vj36Xu/07WuFp3Vo9uAAoNFhUQADA9g8JUDuGZYaOHqqmqc51l0PYe/Wy7zAt7uiznkjN1VT0Sphj6CGGxQEBAQEBAgvbylRQ1K1RKSDmzsEGvLUzEzERnL3bt13Kt2iJmekPETfrZZbhF3Sz48QH8RGPnNfr7fVMnZeLyz9XP52efvhv/b2tMCgyXNw65QKwZFB5O7KeXcAcnwGo2RMTxhCroqondqjKe7iW19sVatRqtZzVrNzY9ncMDQAdgGky8vHdyTk6mBbmBTMCmYFMwLSYFMwKFoFpaBTigU4oZiZic4ZtDabDRvaHwP8ArI1eGpnTgvsJ6Q37Ubt2N+Ouk/Hn8Pey02nSPMlfNSfyzNE4auNF5a9IMHXHtTNPjE/TNJ+30vrj5zx6i50Sf+MYHX1kef2Q1Nq0hy4m8hj88T3GGrnXgiXfSHB0R7GdXhGXzyYFztR20HsDw5/H+UkUYemnjPFQ4zb2Jvxu0exHbX4/bJgkyQpET0VPZ8NIGO9p3H4wO0/2dNr1i1zZ1XqOi06dSkCSyoFJRgDyXPEmn2T3GB2+AgICBbUcKCzHCgEk9wGpMMxEzOUOB1Gu9v35RX6uivEVz7tKkDjPCD7TnTzPcBpXxvXqnXVeq2bYyiM5595+3T7vO3z2JY2dQULa4qXNdTiseFQin6oI+lnmNcdpzpN/6anqq525dynKmInlPT7tdqV8aDn3yREREZQp7lyq5VNVc5zPOWMWmXhbmBQmBTMC0vApxQKgQLwkB1cC004FpSBYUgWEQLTAoYFuYFMwLcwKZgbNuNuVc7Uq8NL93bqwFWuRlV7eFR9N8dniM40yH0nuxu5bWFAW9qnCvNmOru3a7t2n5DkABpA9eAgICBhbapF7esg0LUKijzKECeaozpmG2xXFF2mqeUxPm+a9k7cuLajWW3fqjWKI7jRwo4jhG+iTyzz7sHWRMNPtTHZ0W26c7FNXSr5x/DxzUxoJNcwjzApmBTMC0tAsLQAECVVgTKkCQJArwQKFIFhSBGyQInSBEywLIEdYYPgdYEeYFMwN+6NujattEivX4qNiD73J62Oa0u5e9vQZOcB9FbM2dRt6S0LemtKigwqKMAfzJOSSdSSSYGVAQEBAhvLqnSRqtV1p00UszsQqqBzJJ5QOBdIvSVUvy1tacVKyyQx916/3hzWn9nmfpfVAajRGadTv4Vb4MM/IyDb9m7l4uqxc+u2fvdqZ84z+rAzJzlVMwKZgWloFuYFQIEqLAnRYEyrAlVYF3BAoUgWlIEbJAhdIELpAgZYFlZcr4jX07YGGWgdd6Meidq3DebSUpR0anbkYap3NV+qn2eZ7cDRg7tTQKAqgKoAAAGAANAAByEC6AgICB5+3ds29nRa4uagpUl7TzJ7FUc2Y9gED5w393+udqVOHWjZq2adEHU45VKpHvN4ch2ZOpDWkGIHqbL1DA8ijofxDT54kG97N3PwdRs6PX4Cq3/8AVPx4/VgV6LpgOpUkZHj5Ec5MpqiqM4lzl6xcs1btynKfz3Icz01KEwKQKgQL1EDIRYE6LAnVYEqrAv4YFCsC0rAjZYETrAgdYGPUWBGnPXlyMDr/AEN9HdqaabTuGW4fjbqaePYplGK8TA+8+Rp2DmMnBAdlgICAgICB8r9Ju2L262jXpXLHhoV6lOlTGRTRA2AwXvYYJJ1OR2AAB4FNAogXZgevsmqgTLMB7R/rHliQcRE77qtjV0Rhtec/nwyZO3Hp1LdXpsG4Koz2EB1IOh15qszhuFUw1bbiK7NNccp+cf6a3mTXNKZgXiBeIEiCBkIIGQggToIEqiBIFgV4YFjLAjZYELiBA4gY1QQMZ4HYOgXbmGrWLnRh11Pn7y4SqM+I6sgfZYwOywEBAQEBA0vejoy2ffVHruKtG4qEFqlOpzKqFGUfiTko5AQOe7Z6FLxMm1uKNwv1XBoPjuBHErH+GBoe2d2NoWmTc2tako5vwcdMedRMoPjAy+j425u1a5TrqCo54ccSl8exxeHveuJB2hFc2o3IznOOeXDnx16LDZ9N6uuaLc8uPR6HSabc1KVW1pdSjo3WBU4E4gRwDu4scR+Ej7Lou07/AKzrGUZ58OfGeOXi2bRovW4por068s/zk0nMtlWpmBkCBeIEiQMhIGQkCdIEywJVgXYgWMIETiBC4gY1dlUZdgg7ycfDtPpA8uvtakPdVqnifYH8z8oGE+16v0eBPuoM/E5MDrPQFu7cVq52nXL9TSDJR4icPUYFXZR9VVLDzbwMDvUBAQEBAQEBAsrVVRS7kKqqWYk4AAGSSe7ETOTNNM1TERrLg+2dopcXNWvTRadNieEBAmigKGbA1Y8znXXHZKy5Xv1Zu2weFjD2Yo58/H84e5FdbLF2gtONabvXQI7DIVixRcga68JX8U92asq4aNpWPW4ertx+Gvlm8LbXRfti2yTb/tCD6Vu/W/8AQQKh9Flg49p1amyP1dRWpuDqrqUYeanUQJxAvECRIGRTMDIQwJ0MCZTAlUwL8wLWMCGowAJJAA5knAEDX9obeHu0dftkf5R/P4QPCrVWY8TEse8nMBQos7BEVndiAqqCxJOgAA1Jgdk3A6E6lThuNq5pU+YtlbDt/wDIw9weA9rXmpEDu1na06SLSpItOmihVVRgKByAAgTQEBAQEBAQEDn3SNtc1W/4ZRcKOrNa8qcxSooA2CB2nQ40zlR9KRr9WfsR715srDxRH6muOeVMdZn8+c8nL7B84PZp8M4Py4z+EyDDqK4XJflalFhzFWm/qKzMPzmaZ4w13qf6dUdYmPJ9Hy2fP2sdJVrRbZt29WnTqFLSsyFkVirdWeFlJHskHBBED5gpoToAT5DMCY0SPeKp951X8zAoCn/NpfxiBNTdOypTP/2L+pgZSKeeNO/mPiIEqGBMpgSK0C/igRV66opZjhQNTA1Dau1GrHHu0+xf1PeYGABA6Fud0Q7RvcPWX9itz9Oqp6wjX3KOjHs97hGDkEwO8bnbhWGzV/u9PirYw1ephqpzzAOPZHgoA78wNogICAgICAgICBr++O8yWNLIHWXNQ8NCiMlnc6D2RrgEjPoOZmu5c3I7pmCwlWIry0pjWekOXb2Uns7cWtR+O/vGFe8ckHhUHKUsjTHECTj6p7MSHd9indnWdXSYCYxF31tMZUW+FMd+c/BqpYqjEd3CB25YYx5hM58XMjriNVuzKJq3dCgNc3FFNPBgGPlqTPduM6oRMXXu2ap7S+nZauCeZvLsr9rta1rxcHW0igYrxAE8sr2jvED5d3w3U2tYki6pv1I5VaWWoEeagBfJgD4QNRgICBfTqspypKnvBI/KBn2+26q+9ioPEa/xDX45gezZbXpPpngbuY6ejcvygekDAu4oHlf8Iv8AaLhbO2rVqQJAYIQhI0JNQ4UeGTA3fdvoJuamHvrhLddCadL97U8QW91T5cUDrW6u4Gzdn4NvQBqj/wB6p+8q55ZDHRPwgCBtEBAQEBAQEBAQMHbV7Uo0jUpUHuWBH7tCA2O0jPPA7BqZiqZiM4hstUU11btVWXeWpXm/dxUXq7HZ161ydB19DqqaHvY8X5kDxmmbsz+2mc1hRgLdM53blO72nOVdg7uG06zam1a37RdrTLFjqtJQD7KDQFuzQAa4HecU0bvt1zxer2K9flhsNTlTM/Ge/b/cuV7Tvnuq9S6qj2qjZ4eeF5Ig7+QHkp75BrqmqqapdZYs02LVNqnSPyZY12OEd/ACfN21J+P+UTy258GwdDeyeuvzXIylvTLZ+2+UQfDjP4ZKw1OdWfRRbav7tnd51T5Q7vJzlSAIga3tfcLZNzk1rKgWOpZE6lye8vT4SfjA1y86E9jOPZSvR8Urk/8AcDQPHuOgKyP+Hd3K/eFN/wAgsDzan9nz6u0dO42f69bAsH9nw9u0R/8Aj/8ALAzLX+z9QH+LfVX+5QWn+bNA9gdDFslPho3dzxY063q6ieGiqpA/FAwtxtwqyXrG9pjq6ADL9KnVZshCpI9oDBPeDw5EDrS0gOyZzYyXBRMMqwEBAQEBAQEBAQEBA5b0qbwdY4sKR9hCGrkdrc0p+nM+PD3GQsTcz9iHTbEwe7Hr6tZ0+s/SPe0u3oY1P0dfXGnwH6SKv5l5G2qmPZ+Pmf8Ab5RDzVPB2rom2J+zWCMwxUrnrm8FYYpj+EA+bGWNindp8XG7Uv8Arb8xGlPD7tzm5XEBAQEBAQEBAQEBAQEBAQEBAQEBAQEChMDTt9996Vqho27rUuyMAAhhSz9J/HuH6TRevRTGUarXZ+zar9UVVxlR8+0fdyi2UkliSzEkkk5LMTqSTzOTK91+URGUPQrEInlr6/1r6CHl427eyTf39O3weAtxVfCmura9mRhfNhNlqjeqyRMdiPUWZr58vF9IqoAwNAOQlm4hWAgICAgICAgICAgICAgICAgICAgICAgYO3NlpdUKltUyEqLgkHB0II18wJ5qp3oylts3ZtXIrp1hwK82FVtX6qvwLUB91X4jjsbTQA9mcHwlZXRNM5S7jD4ii/TvUZ5dfp+cO7NtE7e7+v8ASeW+WJt+44V4fU+f9YHpDzyb/wBCuweroPe1B+8rnhTPMU1PPw4mz6Kpk7D0ZRn1cttnE79yLUaU/P8APq6VJKmICAgICAgICAgICAgICAgICAgICAgICAgatvvuyLpOtpgC4ReYph2dVDEUgSw4faPP+c0XrW/GcarTZmO/T17tX7Z75RGeXHSeTmnVGnxBhwlCQQexhpg+R/KQMsnWxVFURMaS8G3sXvbulapnNSoMn6qDVm9FBM9W6d6rJpxV+LNqa55Poy0tkpIlKmOFERVUdyqMAfASziMuDhqqpqqmqdZTTLyQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQNb3v3YW6o1OqCJckhg5Ue2VGOBmxkAjAyO4cwMTTdsxXHDVZYDaFWHriK5maenTvDxujbcmrZPVubrgNd1CoFYtwJzbJxjJIHLu56zzZtTRxlt2ntCnEZU29I82+yQqCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH/9k=">
+          </div>
+          <div class="info">
+            <div class="title">
+              <%=@user.name%> <%=@user.surname%>
+            </div>
+            <div class="desc"><%=@user.university.name%></div>
+            <div class="desc"><%=@user.unv_fac.faculty.name%></div>
+            <div class="desc"><%=@user.fac_dep.department.name%></div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
   </div>
 
-  <div class="field">
-    <label>Fakülte</label><br />
-    <label><%= Faculty.find(current_user.unv_fac.id).name %></label>
+
+  <br>
+
+  <div class="col-md-8 col-lg-8" style="padding: 1%;">
+    <div class="row">
+      <div class="w3-container w3-teal">
+        <h1 id="note_name">EDIT PROFILE</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="padding: 5%">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.label :name %><br/>
+            <%= f.text_field :name, autofocus: true,class: 'form-control' %>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :surname %><br/>
+            <%= f.text_field :surname,class: 'form-control' %>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autocomplete: "email",class: 'form-control' %>
+          </div><br>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field">
+            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+            <%= f.password_field :password, autocomplete: "off",class: 'form-control' %>
+            <% if @minimum_password_length %>
+              <br/>
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br/>
+            <%= f.password_field :password_confirmation, autocomplete: "off",class: 'form-control' %>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
+            <%= f.password_field :current_password, autocomplete: "off",class: 'form-control' %>
+          </div><br>
+
+          <div class="actions" style="text-align: center">
+            <%= f.submit "Update",class: 'btn btn-success btn-lg' %>
+          </div>
+        <% end %>
+
+        <hr style="border-color: black;background-color: black">
+
+        <h3>Cancel my account</h3>
+
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete,class: 'btn btn-danger' %></p>
+      </div>
+    </div>
+
   </div>
 
-  <div class="field">
-    <label>Bölüm</label><br />
-    <label><%= Department.find(current_user.fac_dep.id).name %></label>
-  </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

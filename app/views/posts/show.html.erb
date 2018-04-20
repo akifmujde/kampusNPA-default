@@ -1,70 +1,37 @@
-<div class="container">
+<div class="container-fluid" style="text-align: center;padding: 5%;">
   <div class="row">
-    <p id="notice"><%= notice %></p>
-
-    <p>
-      <strong>Content:</strong>
-      <%= @post.content %>
-    </p>
-
-    <p>
-      <strong>File:</strong>
-      <%= @post.file %>
-    </p>
-
-    <p>
-      <strong>University:</strong>
-      <%= @post.university %>
-    </p>
-
-    <p>
-      <strong>Unv fac:</strong>
-      <%= @post.unv_fac %>
-    </p>
-
-    <p>
-      <strong>Fac dep:</strong>
-      <%= @post.fac_dep %>
-    </p>
-
-    <p>
-      <strong>Dep cour:</strong>
-      <%= @post.dep_cour %>
-    </p>
-
-    <p>
-      <strong>User:</strong>
-      <%= @post.user %>
-    </p>
-
-    <%= link_to 'Edit', edit_post_path(@post) %> |
-    <%= link_to 'Back', posts_path %>
-  </div>
-  <hr>
-  <div class="row">
-    <% if user_signed_in? %>
-
-      <%= render 'comments/form' %>
-
-    <% end %>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="media">
-      <div class="media-left media-middle">
-        <img src="img_avatar1.png" class="media-object" style="width:80px">
-      </div>
-      <div class="media-body">
-        <h4 class="media-heading">Media Middle</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.</p>
-      </div>
+    <div class="col-md-12 col-lg-12">
+      <iframe src="<%= @post.file %>" width="750" height="1000" style="border: 0">
+        This browser does not support PDFs. Please download the PDF to view it:
+        <a href="<%= @post.file %>">Download PDF</a>
+      </iframe>
     </div>
   </div>
-  <div class="row"></div>
-  <div class="row"></div>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <div class="row">
+        <h1>
+          <%= @post.university.name %> <%= @post.unv_fac.faculty.name %>
+          <%= @post.fac_dep.department.name %> <%= @post.dep_cour.course.name %> -
+
+        </h1>
+      </div>
+      <div class="row">
+        <h3>Açıklama (updated by :  <%= @post.user.name %>
+          <%= @post.user.surname %>)</h3>
+        <div class="row">
+          <%= @post.content %>
+        </div>
+
+      </div>
+      <br>
+      <div class="row" style="text-align: right">
+        <a href="<%= @post.file %>" class="btn btn-success">Download file</a>
+        <% if current_user.id == @post.user_id %>
+          <%= link_to 'Edit', edit_post_path(@post),class: "btn btn-warning" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 </div>
